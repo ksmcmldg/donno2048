@@ -1,5 +1,5 @@
 a, t = '<svg fill="none" viewBox="0 0 800 400" width="800" height="400" xmlns="http://www.w3.org/2000/svg"><defs>', input("Give me a string consists of at least five latin letters where no letter repearts:\n")[::-1]
-assert len(set(t)) == len(list(t))
+assert len(set(t.lower())) == len(list(t.lower()))
 assert len(t) >= 5
 for i in range(len(t)):
     assert t[i] in [chr(j) for j in list(range(65, 91)) + list(range(97, 123))]
