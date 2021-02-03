@@ -1,10 +1,11 @@
-a, t = '<svg fill="none" viewBox="0 0 800 400" width="800" height="400" xmlns="http://www.w3.org/2000/svg"><defs>', input("Give me a string consists of at least five latin letters where no letter repearts:\n")[::-1]
-assert len(set(t.lower())) == len(list(t.lower()))
-assert len(t) >= 5
+from os import system, name
+a, t = '<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">\n\t<defs>', input("Give me a string consists of at least five Latin letters in which no letter repeats:\n")
+assert len(set(t.lower())) == len(list(t.lower())) >= 5
 for i in range(len(t)):
     assert t[i] in [chr(j) for j in list(range(65, 91)) + list(range(97, 123))]
-    a += f'<pattern id="{t[i]}" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="scale(0.5,0.5)">'
-    for j in range(len(t)): a += f'<rect width="20" height="20" fill="url(#{t[i + 1]})"/>' if i + 1 != len(t) else '<rect width="20" height="20" fill="none"/>'
-    a += '</pattern>'
-print(a + f'</defs><ellipse fill="url(#{t[0]})" stroke="black" stroke-width="5" cx="400" cy="200" rx="350" ry="150"/></svg>')
-# The svg file was generated using this code with this input: abcdefghiz
+    a += f'\n\t\t<pattern id="{t[i]}" width="{i + 1}" height="{i + 1}">'
+    for j in range(len(t)): a += f'\n\t\t\t<rect width="{j + 1}" height="{j + 1}" fill="url(#{t[i + 1]})"/>' if i + 1 != len(t) else f'\n\t\t\t<rect width="{j + 1}" height="{j + 1}" fill="none"/>'
+    a += '\n\t\t</pattern>'
+system('cls' if name == 'nt' else 'clear')
+print(a + f'\n\t</defs>\n\t<ellipse fill="url(#{t[0]})" cx="{i + 1}" cy="{i + 1}" rx="{i}" ry="{i}"/>\n</svg>')
+system('pause' if name == 'nt' else 'read -n1 -r -p "Press any key to continue..." key')
