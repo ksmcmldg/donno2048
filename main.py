@@ -8,4 +8,4 @@ for i in range(len(t)):
     a += '\n\t\t</pattern>'
 system('cls' if name == 'nt' else 'clear')
 print(a + f'\n\t</defs>\n\t<ellipse fill="url(#{t[0]})" cx="{i + 1}" cy="{i + 1}" rx="{i}" ry="{i}"/>\n</svg>')
-system('pause' if name == 'nt' else 'read -n1 -r -p "Press any key to continue..." key')
+input("Press any key to continue...")
